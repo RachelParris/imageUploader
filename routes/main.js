@@ -17,18 +17,28 @@ router.get("/gallery", function(req, res) {
   res.sendFile(path.join(__dirname, "/../public/gallery.html"));
 });
 
+
+// Find all images
 router.get("/getImages", function(req, res) {
   Image.find({}, function(err, data) {
     res.json({data});
   });
 });
 
+
+// Upload an image to the database
 router.post("/upload-image", 
   controller.upload, 
   controller.saveToDisk, 
   controller.sendToDatabase, 
   function(req, res) {
-  res.json({ status: "Request received!"});
+  res.redirect("/gallery");
+});
+
+
+// TODO Build route to delete images
+router.delete("/:imageId", function (req, res) {
+  res.json({status: "Photo deleted!"})
 });
 
 module.exports = router;

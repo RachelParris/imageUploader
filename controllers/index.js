@@ -8,7 +8,7 @@ const uuid = require('uuid/v4');
 // jimp for image resizing
 const jimp = require("jimp");
 const Image = require("../models/imageModel");
-
+// TODO Ability to delete images
 
 // MULTER SETUP
 multerOptions = {
@@ -27,6 +27,10 @@ multerOptions = {
 const upload = multer(multerOptions).single("image");
 
 const saveToDisk = function(req, res, next) {
+  if(!req.file) {
+    next()
+    return;
+  }
   // creates the unique file name for the uploaded image
   const extension = req.file.mimetype.split("/")[1];
   req.body.photo = `${uuid.v4()}.${extension}`;
@@ -44,6 +48,10 @@ const saveToDisk = function(req, res, next) {
 }
 
 const sendToDatabase = function (req, res, next) {
+  if (!req.body.photo) {
+    res.redirect("/gallery")
+    return;
+  }
   const imgUrl = path.join(req.body.photo);
 
   Image.create({
