@@ -44,10 +44,10 @@ const saveToDisk = function(req, res, next) {
 }
 
 const sendToDatabase = function (req, res, next) {
-  const newImg = req.body.photo;
+  const imgUrl = path.join(req.body.photo);
 
   Image.create({
-    image: newImg
+    image: imgUrl
   }, function(err, data) {
     console.log("Save uploaded image to database!");
   });

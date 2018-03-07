@@ -12,7 +12,7 @@
 </head>
 <body>
   <div>
-    <div class="photoAlbum"></div>
+    <div id="photoAlbum"></div>
   </div>
 <script>
   $.ajax({
@@ -27,13 +27,20 @@
     });
 
   function createGallery(res) {
-    console.log(res)
+    
     res.data.map(function(photo) {
+      console.log(photo)
+      let box = $(
+        `<div class="gallery-item">
+          <img src="uploads/${photo.image}" alt="${photo._id}">
+        </div>`
+      );
       
+      // Append each photo
+      $("#photoAlbum").append(box);
     });
-
-
   }
+
 </script>
 </body>
 </html>

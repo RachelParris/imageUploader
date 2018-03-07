@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/image_uploader')
     console.log("Mongoose is connected");
   });
 
+app.use(express.static("public"));
 app.use("/", require("./routes/main"));
 
 app.listen(3000, function() {
