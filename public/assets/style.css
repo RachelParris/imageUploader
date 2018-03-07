@@ -29,6 +29,11 @@ body, html {
   box-shadow: 15px 25px 50px 2px #ddd;
 }
 
+.page__content > a {
+  margin: 20px;
+  text-decoration-line: none;
+}
+
 .form {
   /* border: 1px solid green; */
 }
@@ -41,6 +46,7 @@ body, html {
   height: 40px;
   display: inline-block;
   text-align: center;
+  cursor: pointer;
 }
 
 .form__label__text {
@@ -67,6 +73,7 @@ body, html {
   height: 40px;
   text-align: center;
   border: none;
+  cursor: pointer;
 }
 
 img {
