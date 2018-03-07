@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Image Upload Form</title>
+</head>
+<body>
+  <!-- Anytime you are uploading files make sure the browser will send the form data as a multipart -->
+  <form action="/upload-image" method="POST" enctype="multipart/form-data" autocomplete="on">
+    <input type="file" name="image" accept="image/gif, image/png, image/jpeg">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
